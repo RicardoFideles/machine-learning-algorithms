@@ -3,8 +3,11 @@
 import matplotlib 
 matplotlib.use('agg')
 
-import matplotlib.pyplot as plt
 
+import matplotlib.pyplot as plt
+import sys
+from time import time
+sys.path.append("../utils/")
 from prep_terrain_data import makeTerrainData
 from class_vis import prettyPicture
 from sklearn.neighbors import KNeighborsClassifier
@@ -46,7 +49,7 @@ clf.fit(features_train, labels_train)
 predictions = clf.predict(features_test)
 
 acc = accuracy_score(predictions, labels_test)
-print "accuracy with split_40", acc
+print "accuracy", acc
 
 try:
     prettyPicture(clf, features_test, labels_test)
